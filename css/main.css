@@ -1,0 +1,7 @@
+#workflow-animation {
+	width: 846px; 
+	height: 311px;
+}
+.no-svg #workflow-animation, .no-js #workflow-animation{
+    background:transparent url("../img/workflow-animation.jpg") no-repeat left top;
+}
