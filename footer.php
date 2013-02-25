@@ -10,8 +10,7 @@
 			<nav>
 				<ul>
 					<li><a href="<?php bloginfo('url'); ?>/sign-up">Sign-Up</a></li>
-<!-- 					<li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li> -->
-					<li><a href="<?php bloginfo('url'); ?>/contact">Contact</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li>
 				</ul>
 			</nav>
 			<div id="copyright">This site was made with love by <a href="http://peopleandcode.com" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc.">People & Code</a>.</div>

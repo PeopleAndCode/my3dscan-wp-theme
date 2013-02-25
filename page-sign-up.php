@@ -128,7 +128,7 @@
 									<div class="input-wrap"><input class="span4" name ="email" type="text" value="<?php (empty($email)) ? '' : $email; ?>"></div>
 								</div>
 								<div class="input span1">
-									<label>Twitter <span class="red">*
+									<label>Twitter <span class="red">
 									<?php if($twitterError != '') { ?>
 										<?=$twitterError;?>
 									<?php } ?>

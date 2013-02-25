@@ -28,7 +28,7 @@
 			<nav>
 				<ul>
 					<li><a href="<?php bloginfo('url'); ?>/sign-up">Sign-up</a></li>
-					<!-- <li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li> -->
+					<li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li>
 				</ul>
 			</nav>
 		</div>
