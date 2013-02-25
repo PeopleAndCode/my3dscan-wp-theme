@@ -5,6 +5,7 @@
 				<a href="http://twitter.com/draftprint3d" alt="Draft Print 3D" title="A 3D printing services company in Toronto"><img src="<?php bloginfo('template_url'); ?>/img/draftprint.png"></a>
 				<a href="http://twitter.com/peopleandcode" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc."><img src="<?php bloginfo('template_url'); ?>/img/peopleandcode.png"></a>
 				<a href="http://twitter.com/webnotwar" title="3D Printing Exhibit at ConFoo 2013 Made Possible by Make Web Not War" alt="Make Web Not War"><img src="<?php bloginfo('template_url'); ?>/img/mwnw.jpg"></a>
+				<a href="http://twitter.com/microsoftCanada" ><img src="<?php bloginfo('template_url'); ?>/img/microsoft.png"></a>
 			</div>
 			<nav>
 				<ul>
@@ -13,7 +14,7 @@
 					<li><a href="<?php bloginfo('url'); ?>/contact">Contact</a></li>
 				</ul>
 			</nav>
-			<div id="copyright">Made with love by <a href="http://peopleandcode.com" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc.">People & Code</a> and <a href="http://draftprint3d.com" alt="Draft Print 3D" title="A 3D printing services company in Toronto">Draft Print 3D</a>.</div>
+			<div id="copyright">Made with love by <a href="http://peopleandcode.com" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc.">People & Code</a>.</div>
 		</div>
 	</footer>
 

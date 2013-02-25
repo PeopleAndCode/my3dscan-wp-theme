@@ -472,11 +472,16 @@
 	background:#faf8f6;
 }
 
+#contact .title {
+	background: url('../img/photo3.png') center center no-repeat;
+	background-size: cover;
+	width: 100%;
+}
+
 #contact .layout{
 	padding-top:0;
 	padding-left:0;
 	padding-bottom:0;
-	background:url("../img/bg-contact.png") repeat-y;
 }
 
 #contact aside{
@@ -847,7 +852,7 @@ footer .layout{
 }
 
 footer #logo img{
-	margin: 0px 30px;
+	margin: 30px 30px;
 }
 
 footer ul{

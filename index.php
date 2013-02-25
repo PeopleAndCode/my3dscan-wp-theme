@@ -11,9 +11,6 @@
 	</section>
 	<section id="home">
 		<div id="quotables">
-			<div class="layout">
-
-			</div>
 		</div>
 	</section>
 
@@ -21,12 +18,12 @@
 		<div id="findout" class="wrap">
 			<div class="layout">
 				<article>
-					<h2>How Do I get 3D Scanned and Printed at Confoo 2013?</h2>
+					<h2>How Do I Get 3D Scanned and Printed at Confoo 2013?</h2>
 					<ul id="steps" class="clearfix">
 						<li>
 							<p><img src="<?php bloginfo('template_url'); ?>/img/signup.png" alt="Step 1: Sign Up!"></p>
-							<h3>Step 1: Come ot our Booth!</h3>
-							<p>Visit our exhibit in the center of the Microsoft Developer Lounge at ConFoo 2013.</p>
+							<h3>Step 1: Come to our Booth!</h3>
+							<p>Visit our booth in the center of the Microsoft Developer Lounge at ConFoo 2013.</p>
 						</li>
 						<li>
 							<p><img src="<?php bloginfo('template_url'); ?>/img/scan.png" alt="Step 2: Get Scanned!"></p>
