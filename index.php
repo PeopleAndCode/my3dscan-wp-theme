@@ -33,12 +33,12 @@
 						<li>
 							<p><img src="<?php bloginfo('template_url'); ?>/img/tweet.png" alt="Step 3: Get a Tweet!"></p>
 							<h3>Step 3: Get 2 Tweets!</h3>
-							<p>You'll receive 2 Tweets - first with a screenshot of your scan - another when it's ready to <a href="<?php bloginfo('url'); ?>/download" title="Download your 3D Scan from ConFoo 2013" alt="Download">Downlaod</a>.</p>
+							<p>You'll receive 2 Tweets - first with a screenshot of your scan - another when it's ready to <a href="<?php bloginfo('url'); ?>/download" title="Download your 3D Scan from ConFoo 2013" alt="Download">Download</a>.</p>
 						</li>
 						<li>
 							<p><img src="<?php bloginfo('template_url'); ?>/img/download.png" alt="Step 4: Download!"></p>
 							<h3>Step 4: Download!</h3>
-							<p><a href="<?php bloginfo('url'); ?>/download" title="Download your 3D Scan from ConFoo 2013" alt="Download">Downlaod</a> your 3D file hosted on <a href="http://windowsazure.com">Windows Azure</a>, then print your 3D self at home or go with <a href="http://twitter.com/draftprint3d" title="Get 3D Printed with Draft Print 3D">@DraftPrint3D</a> FTW!</p>
+							<p><a href="<?php bloginfo('url'); ?>/download" title="Download your 3D Scan from ConFoo 2013" alt="Download">Download</a> your 3D file hosted on <a href="http://windowsazure.com">Windows Azure</a>, then print your 3D self at home or go with <a href="http://twitter.com/draftprint3d" title="Get 3D Printed with Draft Print 3D">@DraftPrint3D</a> FTW!</p>
 						</li>
 					</ul>
 					<p class="np tcenter"><a class="btn btn-primary btn-scroll" href="<?php bloginfo('url'); ?>/sign-up">Can't Wait? Sign-up Now!<i></i></a></p>

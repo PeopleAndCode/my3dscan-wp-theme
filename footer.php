@@ -14,7 +14,7 @@
 					<li><a href="<?php bloginfo('url'); ?>/contact">Contact</a></li>
 				</ul>
 			</nav>
-			<div id="copyright">Made with love by <a href="http://peopleandcode.com" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc.">People & Code</a>.</div>
+			<div id="copyright">This site was made with love by <a href="http://peopleandcode.com" title="Developed with Love by People &amp; Code Inc. A Toronto Digital Development Studio" alt="People &amp; Code Inc.">People & Code</a>.</div>
 		</div>
 	</footer>
 

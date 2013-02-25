@@ -13,7 +13,7 @@
 			$hasError = true;
 		}
 
-		if( $fname === '') {
+		if( $name === '') {
 			$fnameError = 'Please enter your name.';
 			$hasError = true;
 		}
@@ -41,7 +41,7 @@
 				}
 
 				$subject = $name . " thanks for Signing up for a 3D Scan";
-				$body = "Name: $fname \n\nEmail: $email";
+				$body = "Hi $name, \n\nWe've got your info for your 3D scan!  Now swing by our Exhibit in the Centre of the Microsoft Developer Lounge to get it done. \n\nPlease note we're only using this info to inform you when your 3D scan file is ready and how to download it. \n\n For your reference, here's the info you gave us: \n\nName: $name \n\nEmail: $email \n\nTwitter: $twitter";
 				$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
 				$emailSent = wp_mail($email, $subject, $body, $headers);
 			} else {
@@ -77,9 +77,9 @@
 		<div class="wrap">
 			<div class="layout clearfix">
 				<aside>
-					<p>Fill out this info so we can let you know when your 3D file is ready and to get cool 3D printed Swag! We don't use this for anythign else.</p>
-					<p class="info">@DraftPrint3D</p>
-					<p class="info">@PeopleAndCode</p>
+					<p>Fill out this info so we can let you know when your 3D file is ready and to get cool 3D printed Swag! We don't use this for anything else.</p>
+					<p class="info"><a href="http://twitter.com/draftprint3d" target="_blank" title="Draft Print 3D Twitter">@DraftPrint3D</a></p>
+					<p class="info"><a href="http://twitter.com/peopleandcode" target="_blank" title="People &amp; Code Twitter">@PeopleAndCode</a></p>
 				</aside>
 				<div id="connect">
 					<?php 
