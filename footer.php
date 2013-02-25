@@ -10,7 +10,7 @@
 			<nav>
 				<ul>
 					<li><a href="<?php bloginfo('url'); ?>/sign-up">Sign-Up</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li>
+<!-- 					<li><a href="<?php bloginfo('url'); ?>/download">Download Your Scan!</a></li> -->
 					<li><a href="<?php bloginfo('url'); ?>/contact">Contact</a></li>
 				</ul>
 			</nav>
