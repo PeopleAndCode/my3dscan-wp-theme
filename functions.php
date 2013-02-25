@@ -1,4 +1,5 @@
 <?php
+add_filter( 'show_admin_bar', '__return_false' );
 
 add_action( 'init', 'create_services_page', 0 );
 
@@ -56,23 +57,24 @@ function pc_3dscan_email_metabox() {
 
 function pc_3dscan_email_save( $post_id ) {
 
-	if ( !wp_verify_nonce( $_POST['pc_3dscan_email_noonce'], __FILE__ ) )
+	if ( !wp_verify_nonce( $_POST['pc_3dscan_email_noonce'], __FILE__ ) ){
 		return $post_id;
+	}
 
-	if ( !current_user_can( 'edit_post', $post_id ) )
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
 		return $post_id;
+	}
 
 	$meta_value = get_post_meta( $post_id, 'pc_3dscan_email', true );
 	$new_meta_value = stripslashes( $_POST['pc_3dscan_email'] );
 
-	if ( $new_meta_value && '' == $meta_value )
+	if ( $new_meta_value && '' == $meta_value ) {
 		add_post_meta( $post_id, 'pc_3dscan_email', $new_meta_value, true );
-
-	elseif ( $new_meta_value != $meta_value )
+	}	elseif ( $new_meta_value != $meta_value ) {
 		update_post_meta( $post_id, 'pc_3dscan_email', $new_meta_value );
-
-	elseif ( '' == $new_meta_value && $meta_value )
+	} elseif ( '' == $new_meta_value && $meta_value ) {
 		delete_post_meta( $post_id, 'pc_3dscan_email', $meta_value );
+	}
 }
 
 
@@ -98,24 +100,151 @@ function pc_3dscan_twitter_metabox() {
 
 function pc_3dscan_twitter_save( $post_id ) {
 
-	if ( !wp_verify_nonce( $_POST['pc_3dscan_twitter_noonce'], __FILE__ ) )
+	if ( !wp_verify_nonce( $_POST['pc_3dscan_twitter_noonce'], __FILE__ ) ) {
 		return $post_id;
+	}
 
-	if ( !current_user_can( 'edit_post', $post_id ) )
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
 		return $post_id;
+	}
 
 	$meta_value = get_post_meta( $post_id, 'pc_3dscan_twitter', true );
 	$new_meta_value = stripslashes( $_POST['pc_3dscan_twitter'] );
 
-	if ( $new_meta_value && '' == $meta_value )
+	if ( $new_meta_value && '' == $meta_value ) {
 		add_post_meta( $post_id, 'pc_3dscan_twitter', $new_meta_value, true );
-
-	elseif ( $new_meta_value != $meta_value )
+	} elseif ( $new_meta_value != $meta_value ) {
 		update_post_meta( $post_id, 'pc_3dscan_twitter', $new_meta_value );
-
-	elseif ( '' == $new_meta_value && $meta_value )
+	} elseif ( '' == $new_meta_value && $meta_value ) {
 		delete_post_meta( $post_id, 'pc_3dscan_twitter', $meta_value );
+	}
 }
 
 
+function get_3d_file_search() {
+
+	if ( empty($_GET['cr_scan1']) ){
+		$pc_twitter = array(null);
+	} else {
+		$pc_twitter = array(
+			'key' => 'pc_3dscan_twitter',
+			'value' => $_GET['cr_scan1']
+		);
+	}
+	
+	if ( empty($_GET['cr_scan2']) ){
+		$pc_email = array(null);
+	} else {
+		$pc_email = array(
+			'key' => 'pc_3dscan_email',
+			'value' => $_GET['cr_scan2']
+		);
+	}
+		
+	$args = array(
+		'post_type' => 'pc_3dscan',
+		'meta_query' => array(
+			'relation' => 'AND',
+			$pc_email,
+			$pc_twitter
+		), 
+	"posts_per_page" => -1,
+	"order" => "ASC",
+	"order_by" => "meta_value",
+	"meta_key" => "pc_3dscan_twitter"
+	);
+
+	$searched_posts = new WP_Query( $args );
+	return $searched_posts;
+}
+
+function pc_3d_scan_setup(){
+
+	if ( function_exists('add_theme_support' ) ){
+		add_theme_support('post-thumbnails');
+	}
+
+	if ( function_exists( 'add_image_size' ) ) { 
+		add_image_size( '3d_thumb', 250, 250, true );
+		add_image_size( 'featured_thumb', 1024, 498, true );
+	}
+}
+
+add_action('init', 'pc_3d_scan_setup');
+
+function my_attachment_gallery($postid=0, $size='thumbnail', $attributes='') {
+
+	if ($postid<1) $postid = get_the_ID();
+
+	$args = array(
+
+		'post_parent' => $postid,
+
+		'post_type' => 'attachment',
+
+		'order' => 'ASC',
+
+		'numberposts' => -1,
+
+		'post_mime_type' => 'image');
+
+		$images = get_children($args);
+
+		if( empty($images)){
+			return $thumnail = null;
+		}
+
+		$i = 0;
+		foreach($images as $image){
+			$thumbnail[$i] = wp_get_attachment_image_src($image->ID, $size);
+			$i++;
+		}
+		
+		return $thumbnail;
+}
+
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+// add your extension to the array
+$existing_mimes['zip'] = 'application/zip';
+$existing_mimes['stl'] = 'application/stl';
+$existing_mimes['ply'] = 'application/ply';
+// add as many as you like
+// removing existing file types
+// unset( $existing_mimes['exe'] );
+// add as many as you like
+// and return the new full result
+return $existing_mimes;
+}
+
+
+    function formatSizeUnits($bytes)
+    {
+        if ($bytes >= 1073741824)
+        {
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        }
+        elseif ($bytes >= 1048576)
+        {
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        }
+        elseif ($bytes >= 1024)
+        {
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        }
+        elseif ($bytes > 1)
+        {
+            $bytes = $bytes . ' bytes';
+        }
+        elseif ($bytes == 1)
+        {
+            $bytes = $bytes . ' byte';
+        }
+        else
+        {
+            $bytes = '0 bytes';
+        }
+
+        return $bytes;
+}
 ?>

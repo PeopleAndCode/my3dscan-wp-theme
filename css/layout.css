@@ -880,3 +880,7 @@ footer #copyright a{
 footer a:hover, footer #copyright a:hover{
 		color:#86CBF0;
 }
+
+#faq .title {
+	background-image: url("../img/downloadheader.png");
+}
