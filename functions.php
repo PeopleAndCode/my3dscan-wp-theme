@@ -326,27 +326,12 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 class pc_scan_emailer {
   function send($post_ID)  {
-		$args = array(
-			'post_type' => 'attachment',
-			'numberposts' => -1,
-			'post_status' => null,
-			'post_mime_type' => 'application/zip', // set the mime type to get all zips
-			'post_parent' => $post_ID
-		); 
-
-		$attachments = get_posts($args);
-		$link = '';
-		if ($attachments) :
-			setup_postdata($attachments[0]);
-			$link = wp_get_attachment_url($post->ID);
-		endif;
-
   	$email = get_post_meta($post_ID, 'pc_3dscan_email', true);
     $to = $email;
     $name = get_post_meta($post_ID, 'pc_3dscan_fname', true);
     $headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
     $subject = "$name, your 3D Scan is now ready!";
-    $body = "Hey $name, \n\nYour 3D Scan is now ready to download.  $link and enter your email address or twitter name (if you provided us one) to download your 3D Scan file.\n\n All the best,\n@My3DScan\n@DraftPrint3D\n@PeopleAndCode";
+    $body = "Hey $name, \n\nYour 3D Scan is now ready to download.  Goto http://my3dscan.ca/download and enter your email address or twitter name (if you provided us one) to download your 3D Scan file.\n\n All the best,\n@My3DScan\n@DraftPrint3D\n@PeopleAndCode";
     wp_mail($to, $subject, $body, $headers);
     return $post_ID;
   }
