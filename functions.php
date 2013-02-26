@@ -335,7 +335,8 @@ function pc_3dscan_publish($post) {
 		$subject = "test";
 		$body = "Test.";
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
-		wp_mail($email, $subject, $body, $headers);
+		mail($email, $subject, $body, $headers);
+		return $post;
 	// }
 }
 
