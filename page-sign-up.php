@@ -4,7 +4,8 @@
 	*/
 	if(isset($_POST['submitted'])) {
 		$email = is_email(trim($_POST['email']));
-		$name = sanitize_text_field(trim($_POST['fname']));
+		$fname = sanitize_text_field(trim($_POST['fname']));
+		$lname = sanitize_text_field(trim($_POST['lname']));
 		$twitter = sanitize_text_field(trim($_POST['twitter']));
 		$twitter = validate_twitterHandle($twitter);
 
@@ -13,8 +14,13 @@
 			$hasError = true;
 		}
 
-		if( $name === '') {
-			$fnameError = 'Please enter your name.';
+		if( $fname === '') {
+			$fnameError = 'Please enter your first name.';
+			$hasError = true;
+		}
+
+		if( $lname === '') {
+			$lnameError = 'Please enter your last name.';
 			$hasError = true;
 		}
 
@@ -24,6 +30,7 @@
 		}
 
 		if(!isset($hasError)) {
+			$name = $fname . " " . $lname;
 			$new_post = array(
 				'post_title' => ucwords($name),
 				'post_name' => str_replace(" ", "-", $name),
@@ -35,13 +42,15 @@
 
 			if($scan_id !== 0){
 				update_post_meta($scan_id, 'pc_3dscan_email', $email);
+				update_post_meta($scan_id, 'pc_3dscan_fname', $fname);
+				update_post_meta($scan_id, 'pc_3dscan_lname', $lname);
 
 				if(empty($twitterError)){
 					update_post_meta($scan_id, 'pc_3dscan_twitter', $twitter);
 				}
 
-				$subject = $name . " thanks for Signing up for a 3D Scan";
-				$body = "Hi $name, \n\nWe've got your info for your 3D scan!  Now swing by our Exhibit in the Centre of the Microsoft Developer Lounge to get it done. \n\nPlease note we're only using this info to inform you when your 3D scan file is ready and how to download it. \n\n For your reference, here's the info you gave us: \n\nName: $name \n\nEmail: $email \n\nTwitter: $twitter";
+				$subject = $fname . " thanks for Signing up for a 3D Scan";
+				$body = "Hi $fname, \n\nWe've got your info for your 3D scan!  Now swing by our Exhibit in the Centre of the Microsoft Developer Lounge to get it done. \n\nPlease note we're only using this info to inform you when your 3D scan file is ready and how to download it. \n\n For your reference, here's the info you gave us: \n\nFirst Name: $fname \n\nLast Name: $lname \n\nEmail: $email \n\nTwitter: $twitter. \n\nWhen your 3D scan is ready we'll email you a link to download it.";
 				$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
 				$emailSent = wp_mail($email, $subject, $body, $headers);
 			} else {
@@ -114,10 +123,18 @@
 								<div class="input span1">
 									<label>First Name <span class="red">*
 									<?php if($fnameError != '') { ?>
-										<?=$nameError;?>
+										<?=$fnameError;?>
 									<?php } ?>
 									</span></label>
 									<div class="input-wrap"><input class="span4" name ="fname" type="text" value="<?php (empty($fname)) ? '' : $fname; ?>"></div>
+								</div>
+								<div class="input span1">
+									<label>Last Name <span class="red">*
+									<?php if($lnameError != '') { ?>
+										<?=$lameError;?>
+									<?php } ?>
+									</span></label>
+									<div class="input-wrap"><input class="span4" name ="lname" type="text" value="<?php (empty($lname)) ? '' : $lname; ?>"></div>
 								</div>
 								<div class="input span1">
 									<label>Email <span class="red">*

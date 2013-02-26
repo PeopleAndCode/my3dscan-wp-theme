@@ -323,4 +323,14 @@ function pc_3dscan_sortable_columns( $columns ) {
 	return $columns;
 }
 
+add_filter('publish_pc_3dscan', 'pc_3dscan_publish', 9);
+
+function pc_3dscan_publish() {
+	$email = "raykao@gmail.com";
+	$subject = "test";
+	$body = "Test.";
+	$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
+	$emailSent = wp_mail($email, $subject, $body, $headers);
+}
+
 ?>
