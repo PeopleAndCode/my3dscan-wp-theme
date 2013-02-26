@@ -332,7 +332,7 @@ class emailer {
   }
 }
 $myEmailClass = new emailer();
-add_action('publish_post', array($myEmailClass, 'send'));
+add_action('publish_pc_3dscan', array($myEmailClass, 'send'));
 
 // add_action('publish_post', 'pc_3dscan_publish');
 
