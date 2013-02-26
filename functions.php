@@ -338,6 +338,6 @@ class pc_scan_emailer {
 }
 
 $myEmailClass = new pc_scan_emailer();
-add_action('draft_to_publish_pc_3dscan', array($myEmailClass, 'send'));
+add_action('publish_pc_3dscan', array($myEmailClass, 'send'));
 
 ?>
