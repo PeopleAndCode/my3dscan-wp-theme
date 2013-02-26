@@ -327,7 +327,7 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 // add_filter('publish_post', 'pc_3dscan_publish');
 
-add_action('draft_to_publish_pc_3dscan', 'pc_3dscan_twitter', 10, 1);
+add_action('draft_to_publish_pc_3dscan', 'pc_3dscan_publish');
 
 function pc_3dscan_publish($post_ID) {
 	if(get_post_type($post_ID) == 'pc_3dscan'){
