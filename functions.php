@@ -323,18 +323,18 @@ function pc_3dscan_sortable_columns( $columns ) {
 	return $columns;
 }
 
-add_action('draft_to_publish_pc_3dscan', 'pc_3dscan_publish', 10, 1);
+add_action('publish_post', 'pc_3dscan_publish');
 
 // add_filter('publish_post', 'pc_3dscan_publish');
 
 function pc_3dscan_publish($post) {
-	if(get_post_type($post->ID) == 'pc_3dscan'){
+	// if(get_post_type($post->ID) == 'pc_3dscan'){
 		$email = "raykao@gmail.com";
 		$subject = "test";
 		$body = "Test.";
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
 		$emailSent = wp_mail($email, $subject, $body, $headers);
-	}
+	// }
 }
 
 ?>
