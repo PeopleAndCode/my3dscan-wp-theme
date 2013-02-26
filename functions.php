@@ -326,19 +326,19 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 class pc_scan_emailer {
   function send($post_ID)  {
-		$args = array(
-			'post_type' => 'attachment',
-			'numberposts' => -1,
-			'post_status' => null,
-			'post_mime_type' => 'application/zip',
-			'post_parent' => get_the_ID()
-		); 
+		// $args = array(
+		// 	'post_type' => 'attachment',
+		// 	'numberposts' => -1,
+		// 	'post_status' => null,
+		// 	'post_mime_type' => 'application/zip',
+		// 	'post_parent' => get_the_ID()
+		// ); 
 
-		$attachments = get_posts($args);
-		if ($attachments) :
-			setup_postdata($attachments[0]); 
-			$link = wp_get_attachment_url($post->ID);
-		endif;
+		// $attachments = get_posts($args);
+		// if ($attachments) :
+		// 	setup_postdata($attachments[0]); 
+		// 	$link = wp_get_attachment_url($post->ID);
+		// endif;
 
   	$blog_url = bloginfo('url');
   	$email = get_post_meta($post_ID, 'pc_3dscan_email', true);
@@ -347,7 +347,7 @@ class pc_scan_emailer {
     $to = &$email;
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
 		$subject = "$name, your 3D Scan is now ready!"
-		$body = "Hey $name,\n\nYour 3D Scan is now ready.  You can download it here: $link \n\n\nOR\n\n\nGo to $blog_url/download and enter your email or twitter handle (if you provided us with it).\n\nPEACE!\n\n@My3DScan\n\n@DraftPrint3D\n\n@PeopleAndCode";
+		$body = "Hey $name,\n\nYour 3D Scan is now ready.  You can download it here: \n\n\nOR\n\n\nGo to $blog_url/download and enter your email or twitter handle (if you provided us with it).\n\nPEACE!\n\n@My3DScan\n\n@DraftPrint3D\n\n@PeopleAndCode";
 
     wp_mail($to, $subject, $body, $headers );
     return $post_ID;
