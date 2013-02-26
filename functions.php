@@ -247,4 +247,80 @@ return $existing_mimes;
 
         return $bytes;
 }
+
+// Modifys the 'custom post type' list view 
+add_filter('manage_edit-pc_3dscan_columns', 'add_pc_3dscan_columns');
+
+function add_pc_3dscan_columns($scan_columns) {
+	$new_columns['cb'] = '<input type="checkbox" />';
+	$new_columns['title'] = _x('Title', 'column name');
+	$new_columns['id'] = _x('ID', 'column name');
+	$new_columns['pc_3dscan_twitter'] = _x('Twitter', 'column name');
+	$new_columns['pc_3dscan_email'] = __('Email');
+	return $new_columns;
+}
+
+add_filter( 'manage_pc_3dscan_posts_custom_column', 'manage_pc_3dscan_columns', 10, 2 );
+
+function manage_pc_3dscan_columns( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+
+		/* If displaying the 'price' column. */
+		case 'id' :
+			$meta = $post_id;
+			if(empty($meta)) 
+				echo __('Unknown');
+			else
+				echo __( $meta );
+			break;
+
+		case 'pc_3dscan_twitter' :
+
+			/* Get the post meta. */
+			$meta = get_post_meta( $post_id, $column, true );
+
+			/* If no price is found, output a default message. */
+			if ( empty( $meta ) )
+				echo __( 'Unknown' );
+
+			/* If there is a price, prepend 'minutes' to the text string. */
+			else
+				echo __( $meta );
+
+			break;
+
+		/* If displaying the 'genre' column. */
+		case 'pc_3dscan_email' :
+
+			/* Get the genres for the post. */
+			$meta = get_post_meta( $post_id, $column, true );
+
+			/* If no price is found, output a default message. */
+			if ( empty( $meta ) )
+				echo __( 'Unknown' );
+
+			/* If there is a price, prepend 'minutes' to the text string. */
+			else
+				echo __( $meta );
+
+			break;
+
+		default :
+			break;
+	}
+}
+
+
+add_filter( 'manage_edit-pc_3dscan_sortable_columns', 'pc_3dscan_sortable_columns' );
+
+function pc_3dscan_sortable_columns( $columns ) {
+
+	$columns['pc_3dscan_twitter'] = 'pc_3dscan_twitter';
+	$columns['pc_3dscan_email'] = 'pc_3dscan_email';
+
+	return $columns;
+}
+
 ?>
