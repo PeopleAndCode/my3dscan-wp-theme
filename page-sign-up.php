@@ -4,8 +4,8 @@
 	*/
 	if(isset($_POST['submitted'])) {
 		$email = is_email(trim($_POST['email']));
-		$fname = sanitize_text_field(trim($_POST['fname']));
-		$lname = sanitize_text_field(trim($_POST['lname']));
+		$fname = ucwords(sanitize_text_field(trim($_POST['fname'])));
+		$lname = ucwords(sanitize_text_field(trim($_POST['lname'])));
 		$twitter = sanitize_text_field(trim($_POST['twitter']));
 		$twitter = validate_twitterHandle($twitter);
 
