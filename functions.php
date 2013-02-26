@@ -30,7 +30,7 @@ function create_services_page() {
 		'menu_position' => 5,
 		'taxonomies' => array('category'),
 		'has_archive' => false,
-		'supports' => array('title', 'thumbnail')
+		'supports' => array('title', 'thumbnail', 'editor')
 	); 
 	register_post_type('pc_3dscan', $args);
 }
