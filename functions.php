@@ -323,7 +323,7 @@ function pc_3dscan_sortable_columns( $columns ) {
 	return $columns;
 }
 
-add_filter('publish_pc_3dscan', 'pc_3dscan_publish', 9);
+add_filter('publish_pc_3dscan', 'pc_3dscan_publish');
 
 function pc_3dscan_publish() {
 	$email = "raykao@gmail.com";
