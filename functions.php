@@ -335,8 +335,11 @@ function pc_3dscan_publish($post_ID) {
 		$subject = "test";
 		$body = "Test.";
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
-		mail($email, $subject, $body, $headers);
-		return $post_ID;
+		if(wp_mail($email, $subject, $body, $headers)){
+			echo("<p>Message successfully sent!</p>");
+		} else {
+			echo("<p>Message delivery failed...</p>");
+    }
 	// }
 }
 
