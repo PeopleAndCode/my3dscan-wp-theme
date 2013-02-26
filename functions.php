@@ -323,26 +323,37 @@ function pc_3dscan_sortable_columns( $columns ) {
 	return $columns;
 }
 
+
+class emailer {
+  function send($post_ID)  {
+    $friends = 'raykao@gmail.com';
+    mail($friends,"sally's blog updated",'I just put something on my blog: http://blog.example.com');
+    return $post_ID;
+  }
+}
+$myEmailClass = new emailer();
+add_action('publish_post', array($myEmailClass, 'send'));
+
 // add_action('publish_post', 'pc_3dscan_publish');
 
 // add_filter('publish_post', 'pc_3dscan_publish');
 
-add_action('publish_pc_3dscan', 'pc_3dscan_publish');
+// add_action('publish_pc_3dscan', 'pc_3dscan_publish');
 
-function pc_3dscan_publish($post_id) {
-	if(get_post_type($post_id) == 'pc_3dscan'){
-		$email = "raykao@gmail.com";
-		$subject = "test";
-		$body = "Test.";
-		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
-		if(wp_mail($email, $subject, $body, $headers)){
-			echo("<p>Message successfully sent!</p>");
-		} else {
-			echo("<p>Message delivery failed...</p>");
-		}
-	} else {
-		echo("<p>post type error...</p>");
-	}
-}
+// function pc_3dscan_publish($post_id) {
+// 	if(get_post_type($post_id) == 'pc_3dscan'){
+// 		$email = "raykao@gmail.com";
+// 		$subject = "test";
+// 		$body = "Test.";
+// 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
+// 		if(wp_mail($email, $subject, $body, $headers)){
+// 			echo("<p>Message successfully sent!</p>");
+// 		} else {
+// 			echo("<p>Message delivery failed...</p>");
+// 		}
+// 	} else {
+// 		echo("<p>post type error...</p>");
+// 	}
+// }
 
 ?>
