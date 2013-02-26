@@ -329,14 +329,14 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 add_action('draft_to_publish', 'email_notification', 10, 1);
 
-function pc_3dscan_publish($post) {
+function pc_3dscan_publish($post_ID) {
 	// if(get_post_type($post->ID) == 'pc_3dscan'){
 		$email = "raykao@gmail.com";
 		$subject = "test";
 		$body = "Test.";
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
 		mail($email, $subject, $body, $headers);
-		return $post;
+		return $post_ID;
 	// }
 }
 
