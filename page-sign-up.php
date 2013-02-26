@@ -52,7 +52,8 @@
 				$subject = $fname . " thanks for Signing up for a 3D Scan";
 				$body = "Hi $fname, \n\nWe've got your info for your 3D scan!  Now swing by our Exhibit in the Centre of the Microsoft Developer Lounge to get it done. \n\nPlease note we're only using this info to inform you when your 3D scan file is ready and how to download it. \n\n For your reference, here's the info you gave us: \n\nFirst Name: $fname \n\nLast Name: $lname \n\nEmail: $email \n\nTwitter: $twitter. \n\nWhen your 3D scan is ready we'll email you a link to download it.";
 				$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
-				$emailSent = wp_mail($email, $subject, $body, $headers);
+				wp_mail($email, $subject, $body, $headers);
+				$emailSent = true;
 			} else {
 				$emailSent = false;
 				$scan_create = false;

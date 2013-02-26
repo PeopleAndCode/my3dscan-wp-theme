@@ -325,7 +325,9 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 // add_action('publish_post', 'pc_3dscan_publish');
 
-add_filter('publish_post', 'pc_3dscan_publish');
+// add_filter('publish_post', 'pc_3dscan_publish');
+
+add_action('draft_to_publish', 'email_notification', 10, 1);
 
 function pc_3dscan_publish($post) {
 	// if(get_post_type($post->ID) == 'pc_3dscan'){
@@ -333,7 +335,7 @@ function pc_3dscan_publish($post) {
 		$subject = "test";
 		$body = "Test.";
 		$headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
-		$emailSent = wp_mail($email, $subject, $body, $headers);
+		wp_mail($email, $subject, $body, $headers);
 	// }
 }
 
