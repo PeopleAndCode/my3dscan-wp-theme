@@ -24,7 +24,7 @@
 			$hasError = true;
 		}
 
-		if ( $twitter === false ) {
+		if ( ($twitter == false) && (!empty($twitter)) ) {
 			$twitterError = 'Invalid Twitter handle...try again or leave it blank.';
 			$hasError = true;
 		}
@@ -113,7 +113,7 @@
 					<?php 
 					} else { ?>
 						<?php if(isset($hasError)) { ?>
-						<p class="error">Sorry, an monsterous error occured somewhere...we don't know what it is.<p>
+						<p class="error">Sorry, an error occurred...<p>
 						<?php } ?>
 					<hgroup>
 						<h2>3D Scanning Sign-up form</h2>
