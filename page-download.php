@@ -21,7 +21,7 @@
 
 							<article class="faq-item clearfix">
 								<aside><img src="<?php echo $meta_image[0][0]; ?>"; ?></aside>
-								<h2><?php echo ucwords(get_the_title()); ?>posttype: <?php echo get_post_type(get_the_ID()); ?><br/></h2>
+								<h2><?php echo ucwords(get_the_title()); ?></h2>
 
 								<?php
 									$args = array(
@@ -38,7 +38,6 @@
 									?>
 								<p class="np"><a class="btn btn-secondary" href="<?php echo wp_get_attachment_url($post->ID); ?>">Download Your 3D Scan File!<i></i></a></p>
 								<p>Filename: <?php echo basename(get_attached_file($post->ID)); ?> <br/>
-									posttype: <?php echo get_post_type($post->ID); ?><br/>
 								Filesize: <?php  echo formatSizeUnits(filesize( get_attached_file( $post->ID )) ) ;?></p>
 
 							<?php 
