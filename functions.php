@@ -327,10 +327,10 @@ function pc_3dscan_sortable_columns( $columns ) {
 
 // add_filter('publish_post', 'pc_3dscan_publish');
 
-add_action('draft_to_publish', 'pc_3dscan_twitter', 10, 1);
+add_action('draft_to_publish_pc_3dscan', 'pc_3dscan_twitter', 10, 1);
 
 function pc_3dscan_publish($post_ID) {
-	// if(get_post_type($post->ID) == 'pc_3dscan'){
+	if(get_post_type($post_ID) == 'pc_3dscan'){
 		$email = "raykao@gmail.com";
 		$subject = "test";
 		$body = "Test.";
@@ -339,8 +339,10 @@ function pc_3dscan_publish($post_ID) {
 			echo("<p>Message successfully sent!</p>");
 		} else {
 			echo("<p>Message delivery failed...</p>");
-    }
-	// }
+		}
+	} else {
+		echo("<p>post type error...</p>");
+	}
 }
 
 ?>
