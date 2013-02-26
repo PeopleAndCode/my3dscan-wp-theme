@@ -327,7 +327,7 @@ function pc_3dscan_sortable_columns( $columns ) {
 class emailer {
   function send($post_ID)  {
     $friends = 'raykao@gmail.com';
-    wp_mail($friends,"sally's blog updated",'I just put something on my blog: http://blog.example.com');
+    wp_mail($friends,"sally's blog updated $post_ID",'I just put something on my blog: http://blog.example.com');
     return $post_ID;
   }
 }
