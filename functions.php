@@ -323,7 +323,9 @@ function pc_3dscan_sortable_columns( $columns ) {
 	return $columns;
 }
 
-add_filter('publish_post', 'pc_3dscan_publish');
+add_action('draft_to_publish_pc_3dscan', 'pc_3dscan_publish');
+
+// add_filter('publish_post', 'pc_3dscan_publish');
 
 function pc_3dscan_publish($post_id) {
 	if(get_post_type($post_id) == 'pc_3dscan'){
