@@ -21,8 +21,8 @@
 
 							<article class="faq-item clearfix">
 								<aside><img src="<?php echo $meta_image[0][0]; ?>"; ?></aside>
-								<h2><?php echo ucwords(get_the_title()); ?></h2>
-posttype: <?php echo get_post_type(get_the_ID()); ?><br/>
+								<h2><?php echo ucwords(get_the_title()); ?>posttype: <?php echo get_post_type(get_the_ID()); ?><br/></h2>
+
 								<?php
 									$args = array(
 										'post_type' => 'attachment',
