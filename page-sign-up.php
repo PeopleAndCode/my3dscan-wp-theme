@@ -88,6 +88,7 @@
 			<div class="layout clearfix">
 				<aside>
 					<p>Fill out this info so we can let you know when your 3D file is ready and to get cool 3D printed Swag! We don't use this for anything else.</p>
+					<p class="info"><a href="http://twitter.com/my3dscan" target="_blank" title="My3DScan Twitter">@My3DScan</a></p>
 					<p class="info"><a href="http://twitter.com/draftprint3d" target="_blank" title="Draft Print 3D Twitter">@DraftPrint3D</a></p>
 					<p class="info"><a href="http://twitter.com/peopleandcode" target="_blank" title="People &amp; Code Twitter">@PeopleAndCode</a></p>
 				</aside>
