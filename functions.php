@@ -131,7 +131,7 @@ function get_3d_file_search() {
 			'value' => $_GET['cr_scan1']
 		);
 	}
-	
+
 	if ( empty($_GET['cr_scan2']) ){
 		$pc_email = array(null);
 	} else {
@@ -140,7 +140,7 @@ function get_3d_file_search() {
 			'value' => $_GET['cr_scan2']
 		);
 	}
-		
+
 	$args = array(
 		'post_type' => 'pc_3dscan',
 		'meta_query' => array(
@@ -150,8 +150,7 @@ function get_3d_file_search() {
 		), 
 	"posts_per_page" => -1,
 	"order" => "ASC",
-	"order_by" => "meta_value",
-	"meta_key" => "pc_3dscan_twitter"
+	"order_by" => "ID"
 	);
 
 	$searched_posts = new WP_Query( $args );
@@ -205,47 +204,46 @@ function my_attachment_gallery($postid=0, $size='thumbnail', $attributes='') {
 
 add_filter('upload_mimes', 'custom_upload_mimes');
 function custom_upload_mimes ( $existing_mimes=array() ) {
-// add your extension to the array
-$existing_mimes['zip'] = 'application/zip';
-$existing_mimes['stl'] = 'application/stl';
-$existing_mimes['ply'] = 'application/ply';
-// add as many as you like
-// removing existing file types
-// unset( $existing_mimes['exe'] );
-// add as many as you like
-// and return the new full result
-return $existing_mimes;
+	// add your extension to the array
+	$existing_mimes['zip'] = 'application/zip';
+	$existing_mimes['stl'] = 'application/stl';
+	$existing_mimes['ply'] = 'application/ply';
+	// add as many as you like
+	// removing existing file types
+	// unset( $existing_mimes['exe'] );
+	// add as many as you like
+	// and return the new full result
+	return $existing_mimes;
 }
 
 
-    function formatSizeUnits($bytes)
-    {
-        if ($bytes >= 1073741824)
-        {
-            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
-        }
-        elseif ($bytes >= 1048576)
-        {
-            $bytes = number_format($bytes / 1048576, 2) . ' MB';
-        }
-        elseif ($bytes >= 1024)
-        {
-            $bytes = number_format($bytes / 1024, 2) . ' KB';
-        }
-        elseif ($bytes > 1)
-        {
-            $bytes = $bytes . ' bytes';
-        }
-        elseif ($bytes == 1)
-        {
-            $bytes = $bytes . ' byte';
-        }
-        else
-        {
-            $bytes = '0 bytes';
-        }
+function formatSizeUnits($bytes){
+	if ($bytes >= 1073741824)
+	{
+	    $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+	}
+	elseif ($bytes >= 1048576)
+	{
+	    $bytes = number_format($bytes / 1048576, 2) . ' MB';
+	}
+	elseif ($bytes >= 1024)
+	{
+	    $bytes = number_format($bytes / 1024, 2) . ' KB';
+	}
+	elseif ($bytes > 1)
+	{
+	    $bytes = $bytes . ' bytes';
+	}
+	elseif ($bytes == 1)
+	{
+	    $bytes = $bytes . ' byte';
+	}
+	else
+	{
+	    $bytes = '0 bytes';
+	}
 
-        return $bytes;
+	return $bytes;
 }
 
 // Modifys the 'custom post type' list view 
@@ -253,8 +251,8 @@ add_filter('manage_edit-pc_3dscan_columns', 'add_pc_3dscan_columns');
 
 function add_pc_3dscan_columns($scan_columns) {
 	$new_columns['cb'] = '<input type="checkbox" />';
-	$new_columns['title'] = _x('Title', 'column name');
 	$new_columns['id'] = _x('ID', 'column name');
+	$new_columns['title'] = _x('Title', 'column name');
 	$new_columns['pc_3dscan_twitter'] = _x('Twitter', 'column name');
 	$new_columns['pc_3dscan_email'] = __('Email');
 	return $new_columns;
@@ -316,7 +314,7 @@ function manage_pc_3dscan_columns( $column, $post_id ) {
 add_filter( 'manage_edit-pc_3dscan_sortable_columns', 'pc_3dscan_sortable_columns' );
 
 function pc_3dscan_sortable_columns( $columns ) {
-
+	$columns['id'] = 'ID';
 	$columns['pc_3dscan_twitter'] = 'pc_3dscan_twitter';
 	$columns['pc_3dscan_email'] = 'pc_3dscan_email';
 
