@@ -144,7 +144,7 @@
 							</div>
 							<div class="row">
 								<div class="action">
-									<button type="submit" class="btn btn-primary">Sign up!</button>
+									<button type="submit" class="btn btn-primary">Download!</button>
 									<input type="hidden" name="submitted" id="submitted" value="true" />
 								</div>
 							</div>
