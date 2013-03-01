@@ -4,7 +4,8 @@
 
 							<?php	if ( isset($_GET['cr_scan1']) || isset($_GET['cr_scan2']) ):
 								$loop = get_3d_file_search();
-								if($loop->have_posts()):
+								if (($loop != null ) && $loop->have_posts() ):
+									
 									?>
 
 <section id="faq">

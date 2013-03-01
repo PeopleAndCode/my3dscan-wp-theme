@@ -141,20 +141,24 @@ function get_3d_file_search() {
 		);
 	}
 
-	$args = array(
-		'post_type' => 'pc_3dscan',
-		'meta_query' => array(
-			'relation' => 'AND',
-			$pc_email,
-			$pc_twitter
-		), 
-	"posts_per_page" => -1,
-	"order" => "ASC",
-	"order_by" => "ID"
-	);
+	if ( !empty($_GET['cr_scan1']) || !empty($_GET['cr_scan2']) ) {
+		$args = array(
+			'post_type' => 'pc_3dscan',
+			'meta_query' => array(
+				'relation' => 'AND',
+				$pc_email,
+				$pc_twitter
+			), 
+		"posts_per_page" => -1,
+		"order" => "ASC",
+		"order_by" => "ID"
+		);
 
-	$searched_posts = new WP_Query( $args );
-	return $searched_posts;
+		$searched_posts = new WP_Query( $args );
+		return $searched_posts;
+	} else {
+		return null;
+	}
 }
 
 function pc_3d_scan_setup(){
@@ -326,7 +330,9 @@ class pc_scan_emailer {
   function send($post_ID)  {
   	$email = get_post_meta($post_ID, 'pc_3dscan_email', true);
     $to = $email;
+    
     $name = get_post_meta($post_ID, 'pc_3dscan_fname', true);
+
     $headers = 'From: My 3D Scan <info@my3dscan.ca>' . "\r\n" . 'Reply-To: info@my3dscan.ca';
     $subject = "$name, your 3D Scan is now ready!";
     $body = "Hey $name, \n\nYour 3D Scan is now ready to download.  Goto http://my3dscan.ca/download and enter your email address or twitter name (if you provided us one) to download your 3D Scan file.\n\n All the best,\n@My3DScan\n@DraftPrint3D\n@PeopleAndCode";
