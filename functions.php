@@ -122,13 +122,15 @@ function pc_3dscan_twitter_save( $post_id ) {
 
 
 function get_3d_file_search() {
-
-	if ( empty($_GET['cr_scan1']) ){
+	$twitter_handle = $_GET['cr_scan1'];
+	if ( empty($twitter_handle) ){
 		$pc_twitter = array(null);
 	} else {
+		$twitter_handle = sanitize_text_field(trim($twitter_handle));
+		$twitter_handle = validate_twitterHandle($twitter_handle);
 		$pc_twitter = array(
 			'key' => 'pc_3dscan_twitter',
-			'value' => $_GET['cr_scan1']
+			'value' => $twitter_handle
 		);
 	}
 
@@ -343,5 +345,19 @@ class pc_scan_emailer {
 
 $myEmailClass = new pc_scan_emailer();
 add_action('publish_pc_3dscan', array($myEmailClass, 'send'));
+
+
+	function validate_twitterHandle($handle) {
+		if (preg_match('/^(@?)[A-Za-z0-9_]{1,15}$/', $handle)){
+			if(substr($handle, 0, 1) == '@'){
+				return substr($handle, 1);
+			} else {
+				return $handle;
+			}
+		} else {
+			return false;
+		}
+	}
+
 
 ?>

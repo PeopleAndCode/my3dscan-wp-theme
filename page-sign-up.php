@@ -62,18 +62,6 @@
 
 	}
 
-	function validate_twitterHandle($handle) {
-		if (preg_match('/^(@?)[A-Za-z0-9_]{1,15}$/', $handle)){
-			if(substr($handle, 0, 1) == '@'){
-				return substr($handle, 1);
-			} else {
-				return $handle;
-			}
-		} else {
-			return false;
-		}
-	}
-
 ?>
 
 <?php	get_header(); ?>
